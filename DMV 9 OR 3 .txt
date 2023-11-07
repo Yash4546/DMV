@@ -1,0 +1,75 @@
+import pandas as pd
+df = pd.read_csv('RealEstate_Prices.csv')
+
+---------------------------------------
+
+
+df.info()
+
+---------------------------------------
+
+df.head()
+
+
+---------------------------------------
+
+df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')
+df.head()
+
+
+-----------------------------------------------------------
+
+df.isnull().sum()
+
+-----------------------------------------------
+
+
+df.fillna(df.mean(), inplace=True)
+df
+
+----------------------------------------------
+
+
+df.isnull().sum()
+
+-----------------------------------------
+
+
+filtered_df = df[(df['location'] == 'Downtown') & (df['bedrooms'] > 2)]
+filtered_df
+
+-------------------------------------------
+
+
+df1 = pd.get_dummies(df, columns=['property_type', 'location', 'neighborhood'], drop_first=True)
+df1
+
+--------------------------------------------
+
+
+average_sale_price_by_neighborhood = df.groupby('neighborhood')['sale_price'].mean()
+average_sale_price_by_neighborhood
+df
+
+--------------------------------------------
+
+def handle_outliers_with_iqr(data, column):
+    Q1 = data[column].quantile(0.25)
+    Q3 = data[column].quantile(0.75)
+    IQR = Q3 - Q1
+
+    lower_bound = Q1 - 1.5 * IQR
+    upper_bound = Q3 + 1.5 * IQR
+
+    # Identify and handle outliers
+    outliers = data[(data[column] < lower_bound) | (data[column] > upper_bound)]
+    data = data[(data[column] >= lower_bound) & (data[column] <= upper_bound)]
+
+    return data, outliers
+df
+
+--------------------------------------------
+
+df, outliers = handle_outliers_with_iqr(df, 'sale_price')
+outliers
+df

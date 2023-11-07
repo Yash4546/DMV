@@ -1,0 +1,33 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+-----------------------
+
+
+data = pd.read_csv('sales_data_sample.csv', encoding='ISO-8859-1')
+data.head()
+
+----------------------
+
+
+data.info()
+
+-------------------
+
+data.isnull().sum()
+
+--------------------
+
+
+data.fillna('', inplace=True)
+data['LOCATION'] = data['CITY'] + ', ' + data['COUNTRY']
+
+total_sales = data['SALES'].sum()
+average_order_value = data['SALES'].mean()
+
+category_distribution = data['PRODUCTLINE'].value_counts()
+
+category_distribution.plot(kind='bar', title='Product Category Distribution')
+plt.xlabel('Product Category')
+plt.ylabel('Count')
+plt.show()
