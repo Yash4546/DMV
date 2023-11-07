@@ -96,3 +96,34 @@ df
 df.to_csv("Cleaned_Telecom_Customer_Churn.csv", index=False)
 df
 
+
+
+
+
+Certainly! Here are the steps of the provided code in simple and short words:
+
+Load a dataset from a CSV file.
+Display the first few rows of the dataset.
+Get basic information about the dataset.
+Show summary statistics of numeric columns.
+Convert a column to numeric, handling errors, and remove rows with missing values in that column.
+Remove duplicate rows from the dataset.
+Create box plots for 'tenure' and 'MonthlyCharges'.
+Encode binary and categorical columns as numbers.
+Standardize numeric columns.
+Split the dataset into training and testing sets.
+Save the cleaned data to a new CSV file.
+
+
+
+Import the "Telecom_Customer_Churn.csv" dataset.
+Explore the dataset to understand its structure and content.
+Handle missing values in the dataset, deciding on an appropriate strategy.
+Remove any duplicate records from the dataset.
+Check for inconsistent data, such as inconsistent formatting or spelling variations, and standardize it.
+Convert columns to the correct data types as needed.
+Identify and handle outliers in the data.
+Perform feature engineering, creating new features that may be relevant to predicting customer churn.
+Normalize or scale the data if necessary.
+Split the dataset into training and testing sets for further analysis.
+Export the cleaned dataset for future analysis or modeling.
